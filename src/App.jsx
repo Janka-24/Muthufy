@@ -1,6 +1,7 @@
 import './App.css'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Home from './Pages/Home/Home'
+import Reset from './Pages/Home/Reset'
 import Dashboard from './Pages/Dashboard/Dashboard'
 import { useState, useEffect } from 'react'
 import ProtectedRoute from './components/ProtectedRoute'
@@ -32,8 +33,8 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-
         <Route path="/" element={<Home user={user} />} />
+        <Route path="/reset" element={<Reset user={user} />} />
         <Route path="/dashboard" element={<ProtectedRoute user={user}><Dashboard /></ProtectedRoute>} />
       </Routes>
     </BrowserRouter>

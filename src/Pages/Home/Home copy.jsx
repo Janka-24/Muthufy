@@ -1,10 +1,8 @@
 import { useState } from "react"
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth"
-import { auth, provider } from '../../db/firebase'
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth"
+import { auth } from '../../db/firebase'
 import { Navigate } from "react-router-dom"
 import toast, { Toaster } from 'react-hot-toast';
-import ggLogo from '../../assets/google.svg'
-import apLogo from '../../assets/apple.svg'
 
 export default function Home({ user }) {
 
@@ -15,30 +13,6 @@ export default function Home({ user }) {
 
     const handleFormChange = () => {
         setIsSignUpActive(!isSignUpActive)
-    }
-
-    const handleClickGG = (event) => {
-        event.preventDefault();
-        signInWithPopup(auth, provider)
-            .then((userCskyential) => {
-                const user = userCskyential.user;
-            })
-            .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                console.log(errorCode, errorMessage);
-            })
-    }
-    const handleClickApple = (event) => {
-        event.preventDefault();
-        toast('Tu crois je vais payer pour toi !', {
-            icon: '🖕🏾',
-            style: {
-                borderRadius: '5px',
-                background: '#171717',
-                color: '#fff',
-            },
-        });
     }
 
     const handleSignUp = (event) => {
@@ -142,19 +116,20 @@ export default function Home({ user }) {
     if (user) {
         return <Navigate to="/dashboard"></Navigate>
     }
-
     return (
         <>
             <Toaster
                 position="top-center"
                 reverseOrder={false}
             />
-            <div className="flex flex-col justify-center items-center h-screen">
-                <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white mb-8">
-                    {isSignUpActive ? "Login" : "Inscription"}
-                </h2>
-                <div className="w-full max-w-md p-8">
-                    <form className="space-y-6">
+            <div className="flex flex-col h-screen bg-zinc-950">
+                <div className="flex items-start justify-center p-8">
+                    <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white">
+                        {isSignUpActive ? "Login" : "Inscription"}
+                    </h2>
+                </div>
+                <div className="flex-grow flex flex-col items-center justify-center w-80 h-3/5 bg-pink-700">
+                    <form className="w-full space-y-6 mt-0 mb-0">
                         <div>
                             <label htmlFor="email" className="block text-sm font-medium leading-6 text-zinc-50">
                                 Email
@@ -179,7 +154,7 @@ export default function Home({ user }) {
                                 </label>
                                 {isSignUpActive && (
                                     <div className="text-sm">
-                                        <a href="/reset" className="font-semibold text-sky-700 hover:text-sky-500">
+                                        <a href="#" className="font-semibold text-sky-800 hover:text-sky-500">
                                             Mot de passe oublié?
                                         </a>
                                     </div>
@@ -197,6 +172,8 @@ export default function Home({ user }) {
                                 />
                             </div>
                         </div>
+
+
 
                         {isSignUpActive && (
                             <div className="mt-4">
@@ -222,6 +199,7 @@ export default function Home({ user }) {
                             </div>
                         )}
 
+
                         {!isSignUpActive && (
                             <p className="mt-4 text-center text-sm text-gray-500">
                                 Déjà un compte?{'    '}
@@ -240,28 +218,28 @@ export default function Home({ user }) {
                             </p>
                         )}
 
+                        <div className="relative flex py-5 items-center">
+                            <div className="flex-grow border-t border-gray-400"></div>
+                            <span className="flex-shrink mx-4 text-gray-400">ou</span>
+                            <div className="flex-grow border-t border-gray-400"></div>
+                        </div>
+
+                        <div className="mt-4">
+                            <button type="submit" onClick={handleClickGG} className="w-full py-2 px-4 flex items-center justify-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-800">
+                                <img src={ggLogo} alt="Google" className="w-5 h-5" />
+                                <span>Continuer avec Google</span>
+                            </button>
+                        </div>
+
+                        <div className="mt-4">
+                            <button type="submit" onClick={handleClickApple} className="w-full py-2 px-4 flex items-center justify-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-800">
+                                <img src={apLogo} alt="Apple" className="w-5 h-5" />
+                                <span>Continuer avec Apple</span>
+                            </button>
+                        </div>
                     </form>
-
-                    <div className="relative flex py-5 items-center">
-                        <div className="flex-grow border-t border-gray-400"></div>
-                        <span className="flex-shrink mx-4 text-gray-400">ou</span>
-                        <div className="flex-grow border-t border-gray-400"></div>
-                    </div>
-
-                    <div className="mt-4 space-y-4">
-                        <button type="submit" onClick={handleClickGG} className="w-full py-2 px-4 flex items-center justify-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-800">
-                            <img src={ggLogo} alt="Google" className="w-5 h-5" />
-                            <span>Continuer avec Google</span>
-                        </button>
-
-                        <button type="submit" onClick={handleClickApple} className="w-full py-2 px-4 flex items-center justify-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-800">
-                            <img src={apLogo} alt="Apple" className="w-5 h-5" />
-                            <span>Continuer avec Apple</span>
-                        </button>
-                    </div>
                 </div>
             </div>
         </>
     );
-
 }
