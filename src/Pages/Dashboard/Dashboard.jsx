@@ -42,14 +42,14 @@ export default function Dashboard() {
                 position="top-center"
                 reverseOrder={false}
             />
-            <div className="flex flex-col h-screen">
+            <div className="flex flex-col h-screen bg-gradient-to-b from-slate-50 to-slate-200">
                 <div className="flex items-start justify-start p-8">
-                    <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white">
+                    <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-slate-900">
                         Dashboard
                     </h2>
                 </div>
                 <div className="flex-grow flex flex-col items-center justify-center">
-                    <p className="text-xl sm:text-lg font-semibold leading-6 text-white">
+                    <p className="text-xl sm:text-lg font-semibold leading-6 text-slate-900">
                         Salut 👋🏽 {userEmail}
                     </p>
                     <p className="text-sm font-semibold leading-6 text-neutral-500">
@@ -57,10 +57,14 @@ export default function Dashboard() {
                     </p>
                 </div>
                 <div className="flex justify-end p-8">
-                    <button
+                    {/* <button
                         className="rounded-md bg-white px-4 py-2 text-base sm:text-lg font-semibold text-gray-900 shadow-sm hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                         onClick={handleSignOut}
                     >
+                        Se déconnecter
+                    </button> */}
+
+                    <button type="submit" onClick={handleSignOut} className="w-1/6 rounded-md bg-gray-800 px-3 py-1.5 text-sm font-semibold leading-6 text-slate-100 shadow-sm hover:bg-gray-700">
                         Se déconnecter
                     </button>
                 </div>

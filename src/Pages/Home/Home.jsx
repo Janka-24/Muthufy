@@ -149,8 +149,8 @@ export default function Home({ user }) {
                 position="top-center"
                 reverseOrder={false}
             />
-            {/* <div className="flex flex-col justify-center items-center h-screen bg-gradient-to-b from-slate-50 to-slate-200"> */}
             <div className="flex flex-col justify-center items-center h-screen bg-gradient-to-b from-slate-50 to-slate-200">
+                {/* <div className="flex flex-col justify-center items-center h-screen"> */}
                 <h2 className="text-slate-900 w-full max-w-md pl-8 text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tightmb-8">
                     {isSignUpActive ? "Login" : "Inscription"}
                 </h2>
