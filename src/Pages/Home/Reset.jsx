@@ -46,11 +46,11 @@ export default function Reset({ user }) {
             />
             <div className="flex flex-col justify-center items-center h-screen">
 
-                <div className="w-3/4 flex flex-col h-1/4 justify-between mb-5">
-                    <h2 className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white text-center">
-                        Récuperation du mot de passe
+                <div className="w-full max-w-md pl-8 flex flex-col h-1/5 justify-evenly">
+                    <h2 className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white text-start">
+                        Reset
                     </h2>
-                    <p className="text-center text-sm text-gray-300">
+                    <p className="text-start text-sm text-gray-300">
                         Vous allez recevoir un mail pour la réinitialisation du mot de passe, vérifiez vos spams !
                     </p>
                 </div>
@@ -84,9 +84,9 @@ export default function Reset({ user }) {
                             </button>
                         </div>
 
-                        <p className="mt-4 text-center text-sm text-gray-400">
+                        <p className="mt-4 text-end text-sm text-gray-400">
                             <a href="/" className="font-semibold leading-6 hover:text-sky-900">
-                                Annuler
+                                {'<- '} Annuler
                             </a>
                         </p>
                     </form>

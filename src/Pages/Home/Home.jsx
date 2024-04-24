@@ -149,14 +149,15 @@ export default function Home({ user }) {
                 position="top-center"
                 reverseOrder={false}
             />
-            <div className="flex flex-col justify-center items-center h-screen">
-                <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white mb-8">
+            {/* <div className="flex flex-col justify-center items-center h-screen bg-gradient-to-b from-slate-50 to-slate-200"> */}
+            <div className="flex flex-col justify-center items-center h-screen bg-gradient-to-b from-slate-50 to-slate-200">
+                <h2 className="text-slate-900 w-full max-w-md pl-8 text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tightmb-8">
                     {isSignUpActive ? "Login" : "Inscription"}
                 </h2>
                 <div className="w-full max-w-md p-8">
                     <form className="space-y-6">
                         <div>
-                            <label htmlFor="email" className="block text-sm font-medium leading-6 text-zinc-50">
+                            <label htmlFor="email" className="block text-sm font-medium leading-6 text-slate-700">
                                 Email
                             </label>
                             <div className="mt-2">
@@ -166,7 +167,7 @@ export default function Home({ user }) {
                                     type="email"
                                     autoComplete="email"
                                     required
-                                    className="block w-full rounded-md border-0 py-1.5 pl-2 text-zinc-950 shadow-sm ring-gray-300 placeholder:text-gray-950 sm:text-sm sm:leading-6 focus:outline-none"
+                                    className="bg-slate-100 block w-full rounded-md border-0 py-1.5 pl-2 text-slate-700 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-950 sm:text-sm sm:leading-6 focus:outline-none"
                                     onChange={handleEmailChange}
                                 />
                             </div>
@@ -174,12 +175,12 @@ export default function Home({ user }) {
 
                         <div>
                             <div className="flex items-center justify-between">
-                                <label htmlFor="password" className="block text-sm font-medium leading-6 text-zinc-50">
+                                <label htmlFor="password" className="block text-sm font-medium leading-6 text-slate-700">
                                     Mot de passe
                                 </label>
                                 {isSignUpActive && (
                                     <div className="text-sm">
-                                        <a href="/reset" className="font-semibold text-sky-700 hover:text-sky-500">
+                                        <a href="/reset" className="font-semibold text-sky-800 hover:text-sky-900">
                                             Mot de passe oublié?
                                         </a>
                                     </div>
@@ -192,7 +193,7 @@ export default function Home({ user }) {
                                     type="password"
                                     autoComplete="current-password"
                                     required
-                                    className="block w-full rounded-md border-0 py-1.5 pl-2 text-zinc-950 shadow-sm ring-gray-300 placeholder:text-gray-950 sm:text-sm sm:leading-6 focus:outline-none"
+                                    className="bg-slate-100 block w-full rounded-md border-0 py-1.5 pl-2 text-slate-700 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-950 sm:text-sm sm:leading-6 focus:outline-none"
                                     onChange={handlePasswordChange}
                                 />
                             </div>
@@ -202,7 +203,7 @@ export default function Home({ user }) {
                             <div className="mt-4">
                                 <button
                                     type="submit"
-                                    className="w-full rounded-md bg-sky-900 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-sky-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600"
+                                    className="w-full rounded-md bg-gray-800 px-3 py-1.5 text-sm font-semibold leading-6 text-slate-100 shadow-sm hover:bg-gray-700"
                                     onClick={handleSignIn}
                                 >
                                     Se connecter
@@ -214,7 +215,7 @@ export default function Home({ user }) {
                             <div className="mt-4">
                                 <button
                                     type="submit"
-                                    className="w-full rounded-md bg-sky-900 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-sky-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600"
+                                    className="w-full rounded-md bg-gray-800 px-3 py-1.5 text-sm font-semibold leading-6 text-slate-100 shadow-sm hover:bg-gray-700"
                                     onClick={handleSignUp}
                                 >
                                     Créer un compte
@@ -224,8 +225,8 @@ export default function Home({ user }) {
 
                         {!isSignUpActive && (
                             <p className="mt-4 text-center text-sm text-gray-500">
-                                Déjà un compte?{'    '}
-                                <a href="#" onClick={handleFormChange} className="font-semibold leading-6 text-sky-700 hover:text-sky-900">
+                                Déjà un compte ?{'    '}
+                                <a href="#" onClick={handleFormChange} className="font-semibold leading-6 text-sky-800 hover:text-sky-900">
                                     Se connecter
                                 </a>
                             </p>
@@ -234,7 +235,7 @@ export default function Home({ user }) {
                         {isSignUpActive && (
                             <p className="mt-4 text-center text-sm text-gray-500">
                                 Pas de compte ?{'    '}
-                                <a href="#" onClick={handleFormChange} className="font-semibold leading-6 text-sky-700 hover:text-sky-900">
+                                <a href="#" onClick={handleFormChange} className="font-semibold leading-6 text-sky-800 hover:text-sky-900">
                                     Créer un compte
                                 </a>
                             </p>
@@ -249,13 +250,13 @@ export default function Home({ user }) {
                     </div>
 
                     <div className="mt-4 space-y-4">
-                        <button type="submit" onClick={handleClickGG} className="w-full py-2 px-4 flex items-center justify-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-800">
+                        <button type="submit" onClick={handleClickGG} className="w-full py-2 px-4 flex items-center justify-center gap-x-2 text-sm font-medium rounded-lg border-0 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400">
                             <img src={ggLogo} alt="Google" className="w-5 h-5" />
                             <span>Continuer avec Google</span>
                         </button>
 
-                        <button type="submit" onClick={handleClickApple} className="w-full py-2 px-4 flex items-center justify-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-800">
-                            <img src={apLogo} alt="Apple" className="w-5 h-5" />
+                        <button type="submit" onClick={handleClickApple} className="w-full py-2 px-4 flex items-center justify-center gap-x-2 text-sm font-medium rounded-lg border-0 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400">
+                            <img src={apLogo} alt="Apple" className="w-5 h-5 fill-black" />
                             <span>Continuer avec Apple</span>
                         </button>
                     </div>
